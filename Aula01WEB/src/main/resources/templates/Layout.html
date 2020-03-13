@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      th:href="@{/css/main.css}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      th:href="@{/css/fontawesome/css/font-awesome.css}"
+    />
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/lista.css}" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cadastro de Usuário</title>
+  </head>
+<body>
+	
+	<header th:replace="fragment/header :: cabecalho"></header>
+	
+	<aside>
+	<nav th:replace="fragment/sidebar :: nav-sidebar"></nav>
+	</aside>
+	
+	<div>
+		<section layout:fragment="conteudo"></section>
+	</div>
+
+	<footer th:replace="fragment/footer :: rodape"> </footer>
+
+    <script
+      type="text/javascript"
+      th:src="@{/js/jquery/jquery-3.4.1.js}"
+    ></script>
+    <script
+      type="text/javascript"
+      th:href="@{/js/bootstrap/bootstrap.js}"
+    ></script>
+</body>
+</html>
