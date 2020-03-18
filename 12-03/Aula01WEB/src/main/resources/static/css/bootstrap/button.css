@@ -1,0 +1,175 @@
+/* Mixins */
+/* bg shortcodes */
+ .bg-gradient1 span, .bg-gradient1:before {
+	 background: #1aab03;
+	 background: -moz-linear-gradient(180deg, #1aab03 0%, #1aab03 80%, #1aab03 100%);
+	 background: -webkit-linear-gradient(180deg, #1aab03 0%, #1aab03 80%, #1aab03 100%);
+	 background: linear-gradient(180deg, #1aab03 0%, #1aab03 80%, #1aab03 100%);
+}
+ .bg-gradient2 span, .bg-gradient2:before {
+	 background: #39c2c9;
+	 background: -moz-linear-gradient(180deg, #39c2c9 0%, #3fc8c9 80%, #3fc8c9 100%);
+	 background: -webkit-linear-gradient(180deg, #39c2c9 0%, #3fc8c9 80%, #3fc8c9 100%);
+	 background: linear-gradient(180deg, #39c2c9 0%, #3fc8c9 80%, #3fc8c9 100%);
+}
+ .pop-onhover.bg-gradient3 span, .pop-onhover.bg-gradient3:before {
+	 background: #b9aef0;
+	 background: -moz-linear-gradient(180deg, #b9aef0 0%, #ada1eb 80%, #ada1eb 100%);
+	 background: -webkit-linear-gradient(180deg, #b9aef0 0%, #ada1eb 80%, #ada1eb 100%);
+	 background: linear-gradient(180deg, #b9aef0 0%, #ada1eb 80%, #ada1eb 100%);
+}
+ .bg-gradient4 span {
+	 background: #f6682f;
+	 background: -moz-linear-gradient(180deg, #f6682f 0%, #f6682f 80%, #f6682f 100%);
+	 background: -webkit-linear-gradient(180deg, #f6682f 0%, #f6682f 80%, #f6682f 100%);
+	 background: linear-gradient(180deg, #f6682f 0%, #f6682f 80%, #f6682f 100%);
+}
+/* General */
+ .wrapper {
+	 margin: 4% auto;
+	 text-align: center;
+}
+ h3 {
+	 color: #666a73;
+	 font-weight: 300;
+	 letter-spacing: 0.06em;
+}
+ a {
+	 text-decoration: none;
+}
+ a:hover, a:focus, a:active {
+	 text-decoration: none;
+}
+/* fancy Button */
+ .fancy-button {
+	 display: inline-block;
+	 margin: 20px;
+	 font-family: 'Heebo', Helvetica, Arial, sans-serif;
+	 font-weight: 500;
+	 font-size: 16px;
+	 letter-spacing: 0.07em;
+	 text-transform: uppercase;
+	 line-height: 24px;
+	 color: #fff;
+	 position: relative;
+}
+ .fancy-button.bg-gradient1 {
+	 text-shadow: 0px 0px 1px #bf4c28;
+}
+ .fancy-button.bg-gradient2 {
+	 text-shadow: 0px 0px 1px #227270;
+}
+ .fancy-button.bg-gradient3 {
+	 text-shadow: 0 0 1px #546082;
+}
+ .fancy-button:before {
+	 content: '';
+	 display: inline-block;
+	 height: 40px;
+	 position: absolute;
+	 bottom: -1px;
+	 left: 10px;
+	 right: 10px;
+	 z-index: -1;
+	 border-radius: 2em;
+	 filter: blur(14px) brightness(0.9);
+	 transform-style: preserve-3d;
+	 transition: all 0.3s ease-out;
+}
+ .fancy-button i {
+	 margin-top: -2px;
+	 font-size: 1.265em;
+	 vertical-align: middle;
+}
+ .fancy-button span {
+	 display: inline-block;
+	 padding: 16px 20px;
+	 border-radius: 50em;
+	 position: relative;
+	 z-index: 2;
+	 will-change: transform, filter;
+	 transform-style: preserve-3d;
+	 transition: all 0.3s ease-out;
+}
+ .fancy-button:focus {
+	 color: #fff;
+}
+ .fancy-button:hover {
+	 color: #fff;
+}
+ .fancy-button:hover span {
+	 filter: brightness(0.9) contrast(1.2);
+	 transform: scale(0.96);
+}
+ .fancy-button:hover:before {
+	 bottom: 3px;
+	 filter: blur(6px) brightness(0.8);
+}
+ .fancy-button:active span {
+	 filter: brightness(0.75) contrast(1.7);
+}
+ .fancy-button.pop-onhover span {
+	 border-radius: 4px;
+}
+ .fancy-button.pop-onhover:before {
+	 opacity: 0;
+	 bottom: 10px;
+}
+ .fancy-button.pop-onhover:hover:before {
+	 bottom: -7px;
+	 opacity: 1;
+	 filter: blur(16px);
+}
+ .fancy-button.pop-onhover:hover span {
+	 transform: scale(1);
+}
+ .fancy-button.pop-onhover:hover:active span {
+	 filter: brightness(1) contrast(1);
+	 transform: scale(1);
+	 transition: all 0.2s ease-out;
+}
+ .fancy-button.pop-onhover:hover:active:before {
+	 bottom: 0;
+	 filter: blur(5px) brightness(0.85);
+	 transition: all 0.2s ease-out;
+}
+ .pop-onhover.bg-gradient3 span:hover {
+	 background: #b9aef0;
+	 background: -moz-linear-gradient(120deg, #b9aef0 0%, #ada1eb 80%, #ada1eb 100%);
+	 background: -webkit-linear-gradient(120deg, #b9aef0 0%, #ada1eb 80%, #ada1eb 100%);
+	 background: linear-gradient(120deg, #b9aef0 0%, #ada1eb 80%, #ada1eb 100%);
+}
+ .bg-gradient4:before {
+	 bottom: 2px;
+	 opacity: 0.6;
+	 transition: all 0.3s ease-out;
+}
+ .bg-gradient4 {
+	 transition: all 1s ease;
+}
+ .bg-gradient4 span {
+	 outline: 0px solid transparent;
+}
+ .bg-gradient4:hover span {
+	 background: #fc3d7c;
+	 background: -moz-linear-gradient(-25deg, #fc3d7c 0%, #f76a34 80%, #f76a34 100%);
+	 background: -webkit-linear-gradient(-25deg, #fc3d7c 0%, #f76a34 80%, #f76a34 100%);
+	 background: linear-gradient(-25deg, #fc3d7c 0%, #f76a34 80%, #f76a34 100%);
+}
+ .bg-gradient4:focus span, .bg-gradient4:active span {
+	 background: #fc3d7c;
+	 background: -moz-linear-gradient(25deg, #fc3d7c 0%, #f76a34 80%, #f76a34 100%);
+	 background: -webkit-linear-gradient(25deg, #fc3d7c 0%, #f76a34 80%, #f76a34 100%);
+	 background: linear-gradient(25deg, #fc3d7c 0%, #f76a34 80%, #f76a34 100%);
+}
+ .bg-gradient4:focus span {
+	 box-shadow: 0 0 9px #00fff8;
+}
+ .bg-gradient4:active span {
+	 filter: brightness(0.85) contrast(1.3);
+}
+ .bg-gradient4 span {
+	 text-transform: capitalize;
+}
+
+
