@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:th="http://thymeleaf.org">
+	  xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout}">
 
 <head>
 <!-- CSS -->
@@ -23,6 +25,11 @@
 <title>SPRINGTRAB</title>
 </head>
 <body>
+<section layout:fragment="conteudo">
+	
+	<div class="app-title">
+	<h1>aehoo</h1>
+	</div>
 <div id="layers">
 </div>
 
@@ -33,9 +40,9 @@
 	<div class="container" style="border-radius:5px;">
 	
 	
-	
-	<table id="myTable" class="table table-dark">
-		<thead>
+	<div id="no-more-tables">
+	<table id="myTable" class="table table-dark cf">
+		<thead class="cf">
 			<tr>
 				<th>ID</th>
 				<th>Nome</th>
@@ -45,17 +52,18 @@
 		</thead>
 	<tbody>
 		<tr th:each="usuario :${listaUsuario}">
-			<td th:text="${usuario.id}">1</td>
-			<td th:text="${usuario.nome}">Felipe Zilio</td>
-			<td th:text="${usuario.email}">zilio@hotmail.com</td>
+			<td data-title="ID" th:text="${usuario.id}">1</td>
+			<td data-title="Nome" th:text="${usuario.nome}">Felipe Zilio</td>
+			<td data-title="-Email" th:text="${usuario.email}">zilio@hotmail.com</td>
 			
-			<td><a class="btn btn-secondary btn-sm" th:href="@{/usuario/alterar/{id}(id=${usuario.id})}">
+			<td data-title="Ações"><a class="btn btn-secondary btn-sm" th:href="@{/usuario/alterar/{id}(id=${usuario.id})}">
 			<i class="fa fa-pencil-square fa-2x" aria-hidden="true"></i>
 </a>
 			<a class="btn btn-danger btn-sm" th:href="@{/usuario/excluir/{id}(id=${usuario.id})}"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a></td>
 		</tr>
 	</tbody>
 	</table>
+	</div>
 <div align="center">
 <a th:href="@{/usuario/novo}" href="#" class="fancy-button bg-gradient1"><span><i class="fa fa-plus fa-2x"></i> Novo Usuário</span></a>
 	</div>
@@ -63,43 +71,8 @@
 	<br><br>
 	</div>
 
-
+</section>
 </body>
 		
-		<script>
-		$(document).ready( function () {
-		    $('.table').DataTable({
-		    	"language":{
-		    	    "sEmptyTable": "Nenhum registro encontrado",
-		    	    "sInfo": "Mostrando de _START_ até _END_ do total de _TOTAL_ registros .",
-		    	    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
-		    	    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
-		    	    "sInfoPostFix": "",
-		    	    "sInfoThousands": ".",
-		    	    "sLengthMenu": "_MENU_ Resultados por página.",
-		    	    "sLoadingRecords": "Carregando...",
-		    	    "sProcessing": "Processando...",
-		    	    "sZeroRecords": "Nenhum registro encontrado",
-		    	    "sSearch": "Pesquisar",
-		    	    "oPaginate": {
-		    	        "sNext": "Próximo",
-		    	        "sPrevious": "Anterior",
-		    	        "sFirst": "Primeiro",
-		    	        "sLast": "Último"
-		    	    },
-		    	    "oAria": {
-		    	        "sSortAscending": ": Ordenar colunas de forma ascendente",
-		    	        "sSortDescending": ": Ordenar colunas de forma descendente"
-		    	    },
-		    	    "select": {
-		    	        "rows": {
-		    	            "_": "Selecionado %d linhas",
-		    	            "0": "Nenhuma linha selecionada",
-		    	            "1": "Selecionado 1 linha"
-		    	        }
-		    	    }
-		    	}
-		    });
-		});
-		</script>
+		
 </html>
