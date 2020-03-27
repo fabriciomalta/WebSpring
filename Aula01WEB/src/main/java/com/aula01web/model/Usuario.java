@@ -17,6 +17,8 @@ import com.aula01web.util.ValidarSenha;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 
 @Data
@@ -24,6 +26,7 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Table(name = "TAB_USUARIO")
 @ValidarSenha(confirmeSenha="confirmeSenha", senha="senha", message = "Inserir mesmas senhas ok")
+@Getter @Setter
 public class Usuario implements Serializable {
 
 	/*

@@ -1,6 +1,10 @@
 package com.aula01web.web.controller;
 
 import java.util.List;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.naming.Binding;
 import javax.validation.Valid;
@@ -95,8 +99,8 @@ public class UsuarioController {
 		}
 
 	@RequestMapping(value="/excluir", method = RequestMethod.POST)
-	public ModelAndView excluirUsuario(Usuario usuario) {
-		usuarioService.deleteById(usuario.getId());
+	public ModelAndView excluirUsuario(Usuario user) {
+		usuarioService.deleteById(user.getId());
 		//System.out.println(usuario.toString());
 		return new ModelAndView("redirect:/usuario/list");
 	}
