@@ -34,7 +34,7 @@ public class UsuarioController {
 	
 	
 	@Autowired
-	private RoleService roleService;
+	private RoleService roleServices;
 	
 	@RequestMapping(value="/list", method = RequestMethod.GET)
 	public ModelAndView listarUsuarios(Usuario usuario){
@@ -113,9 +113,9 @@ public class UsuarioController {
 	
 	
 	@ModelAttribute("roles")
-	public List<Role> listaRoles(){		
-		return roleService.findAll();
+	public List<Role> listaRoles(){
+		return roleServices.findAll();
 	}
-
+	
 }
 
