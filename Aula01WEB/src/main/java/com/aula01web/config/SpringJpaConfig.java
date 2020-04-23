@@ -1,3 +1,4 @@
+  
 package com.aula01web.config;
 
 import java.util.Properties;
@@ -37,7 +38,7 @@ public class SpringJpaConfig {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setUrl(env.getProperty("spring.datasource.url"));
 		dataSource.setUsername(env.getProperty("spring.datasource.username"));
-		//datasource.setPassword(env.getProperty("spring.datasource.password"));
+		dataSource.setPassword(env.getProperty("spring.datasource.password"));
 		return dataSource;
 	}
 	
@@ -61,8 +62,7 @@ public class SpringJpaConfig {
     	return adapter;
 	}
     
-    
-    @Bean(name="transactionManager")
+    @Bean
     public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
     	JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
     	jpaTransactionManager.setEntityManagerFactory(entityManagerFactory);
