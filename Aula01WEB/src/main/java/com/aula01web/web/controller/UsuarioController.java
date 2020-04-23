@@ -10,6 +10,7 @@ import javax.naming.Binding;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -25,6 +26,7 @@ import com.aula01web.model.Usuario;
 import com.aula01web.service.*;
 import com.aula01web.service.exceptions.EmailCadastradoException;
 
+@SpringBootApplication
 @Controller
 @RequestMapping(value="/usuario")
 public class UsuarioController {

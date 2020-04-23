@@ -13,6 +13,6 @@ public interface GenericService<T, ID> {
 	T getOne(ID id);
 	void deleteById(ID id);
 	T findById(ID id);
-	Optional<Usuario> findUsuarioByEmail(String email);
+	//Optional<Usuario> findUsuarioByEmail(String email);
 	
 }

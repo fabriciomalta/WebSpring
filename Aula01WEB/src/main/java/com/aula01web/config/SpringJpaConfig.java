@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -24,6 +25,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.aula01web.model.Usuario;
 import com.aula01web.repository.UsuarioRepository;
 
+													
 @Configuration
 @EnableJpaRepositories(basePackageClasses = UsuarioRepository.class)
 @ComponentScan(basePackageClasses = UsuarioRepository.class)
