@@ -1,10 +1,7 @@
 package com.aula01web.web.controller;
 
 import java.util.List;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+
 
 import javax.naming.Binding;
 import javax.validation.Valid;

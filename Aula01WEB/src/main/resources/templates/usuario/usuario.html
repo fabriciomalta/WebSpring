@@ -9,98 +9,86 @@ layout:decorate="~{layout}">
 <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-switch.min.css}"></link>
 
  </head>
-  <body>
-  <div class="app-title">
-	<h1>aehoo</h1>
-	</div>
-  <section layout:fragment="conteudo">
-    <br>
+ <body>
+	<section layout:fragment="conteudo">
+		<div class="container">
+			<div class="app-title">
+				<h1>
+					<i class="fa fa-edit">Cadastro de Usuários</i>
+				</h1>
+				<ul class="app-breadcrumb breadcrumb">
+					<li class="breadcrumb-item"><i class="fa fa-search fa-lg"></i></li>
+					<li class="breadcrumb-item"><a th:href="@{/usuario/list}">Pequisa
+							de Usuários</a></li>
+				</ul>
+			</div>
+            		<div class="tile">
+				<div class="tile-body">
+			<form
+				th:action="${usuario.id == null} 
+                     ?@{/usuario/incluir}
+                     :@{/usuario/alterar}"
+				method="POST" th:object="${usuario}">
 
-    <h1 class="display-4" align="center">NOVO USUÁRIO</h1>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<div th:replace="fragment/validacao :: validacao"></div>
+						<div th:replace="fragment/alert"></div>
+					</div>
 
-    <div class="container text-white" style="background-color:#343A40;border-radius:10px;">
-    <div class="">
-      <form
-        style="margin: display: inline-block;"
-        th:action="${usuario.id==null}?@{/usuario/incluir}:@{/usuario/editar}"
-        method="POST"
-        th:object="${usuario}">
-        <br>
-  		<div class="row">
-  			<div class="col-xs-12 col-sm-12 col-md-12">
-  					<div th:replace="fragment/validacao :: validacao"></div>
-  					<div th:replace="fragment/alert"></div>
-  			</div>
-  		</div>
-          
-            <div class="form-group">
-           <i class="fa fa-user-circle-o fa-2x" aria-hidden="true"><h5 class="d-inline"> Nome:</h5></i>
-          
-              <input
-                placeholder="João roberto Pinheiros"
-                class="form-control"
-                type="text"
-                name="nome"
-                id="nome"
-                th:classappend="${#fields.hasErrors('nome')} ? 'is-invalid'"
-                th:field="*{nome}"
-              >
-              <div class="invalid-feedback">
-                <span th:errors="*{nome}"></span>
-              </div>
-            </div>
-       
-          
-            <div class="form-group">
-            <i class="fa fa-envelope fa-2x" aria-hidden="true"><h5 class="d-inline"> Email:</h5></i>
-              <input
-                placeholder="exemplo@hotmail.com"
-                class="form-control"
-                type="text"
-                name="email"
-                id="email"
-                th:classappend="${#fields.hasErrors('senha')} ? 'is-invalid'"
-                th:field="*{email}"
-              />
-              <div class="invalid-feedback">
-                <span th:errors="*{email}"></span>
-              </div>
-            
-          </div>
+				</div>
 
-            <div class="form-group">
-				<i class="fa fa-lock fa-2x" aria-hidden="true"><h5 class="d-inline"> Senha:</h5></i>             
-              <input
-                placeholder="Insira sua senha"
-                th:classappend="${#fields.hasErrors('senha')} ? 'is-invalid'"
-                class="form-control"
-                type="password"
-                name="senha"
-                id="senha"
-                th:field="*{senha}"
-              />
-              <div class="invalid-feedback">
-                <span th:errors="*{senha}"></span>
-              </div>
-            
-          </div>
-                    
-            <div class="form-group">
-         <i class="fa fa-lock fa-2x" aria-hidden="true"><h5 class="d-inline"> Confirmar senha:</h5></i>
-              <input
-                placeholder="Confirme sua senha"
-                th:classappend="${#fields.hasErrors('confirmeSenha')} ? 'is-invalid'"
-                class="form-control"
-                type="password"
-                name="confirmeSenha"
-                id="confirmeSenha"
-                th:field="*{confirmeSenha}"
-              />
-              <div class="invalid-feedback">
-                <span th:errors="*{senha}"></span>
-              </div>          
-        </div>
-        <fieldset>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<div class="form-group">
+							<label class="control-label">Nome:</label> <input type="text"
+								name="nome" id="nome" th:field="*{nome}" class="form-control"
+								th:classappend="${#fields.hasErrors('nome')} ? 'is-invalid'" />
+							<div class="invalid-feedback">
+								<span th:errors="*{username}"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<div class="form-group">
+							<label class="control-label">E-mail:</label> <input type="text"
+								name="email" id="email" th:field="*{email}" class="form-control"
+								th:classappend="${#fields.hasErrors('email')} ? 'is-invalid'" />
+							<div class="invalid-feedback">
+								<span th:errors="*{email}"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label class="control-label">Senha:</label> <input
+								type="password" name="senha" id="senha" th:field="*{senha}"
+								class="form-control"
+								th:classappend="${#fields.hasErrors('senha')} ? 'is-invalid'" />
+							<div class="invalid-feedback">
+								<span th:errors="*{password}"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label class="control-label">Confirme Senha:</label> <input
+								type="password" name="confirmeSenha" id="confirmeSenha"
+								th:field="*{confirmeSenha}" class="form-control"
+								th:classappend="${#fields.hasErrors('confirmeSenha')} ? 'is-invalid'" />
+							<div class="invalid-feedback">
+								<span th:errors="*{confirmeSenha}"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<fieldset>
 						<legend>Grupos de Trabalho</legend>
 							<div class="row">
 								<th:block th:each="grupo : ${roles}">
@@ -119,30 +107,21 @@ layout:decorate="~{layout}">
 								</th:block>
 
 							</div>
-		</fieldset>
-				
-        <input type="hidden" th:field="*{id}" />
-      
-      <div class="row">
-       <div class="col-sm-6">
-        
-        <a class="btn btn-dark buttonss" th:href="@{/usuario/list}" href="google.com"><i class="fa fa-long-arrow-left fa-2x" aria-hidden="true"></i></a>
-        </div>
-        <div align="col">
-        <button class="btn btn-dark buttonss d-inline btn-lg" type="submit">Salvar</button>
-      </div>
-      </form>
-      <br><br><br>
-      
-      </div>
-    </div>
-		</section>
-		<th:block layout:fragment="javascript-extra">
+				</fieldset>
+				<input type="hidden" th:field="*{id}">
+				<div class="tile-footer">
+					<button type="submit" class="btn btn-primary">Salvar</button>
+				</div>
+			</form>
+			</div>
+			</div>
+		</div>
+	</section>
+	<th:block layout:fragment="javascript-extra">
         <script th:src="@{/js/bootstrap-switch.min.js}"></script>
         <script>
 			$('.js-status').bootstrapSwitch();
 		</script>
 	</th:block>
-  </body>
-
+</body>
 </html>

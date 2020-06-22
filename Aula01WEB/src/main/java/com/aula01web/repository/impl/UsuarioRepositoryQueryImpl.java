@@ -20,9 +20,21 @@ public class UsuarioRepositoryQueryImpl implements UsuarioQuery
 			
 			boolean ativo = Boolean.TRUE;
 			
-			TypedQuery<Usuario> query = entityManager.createQuery("SELECT u FROM Usuario u "+"WHERE "+ "u.email =:email " + "AND " + "u.ativo =:ativo", Usuario.class);
+			TypedQuery<Usuario> query = entityManager
+					.createQuery("SELECT u FROM Usuario u "
+							   + "WHERE "
+							   + "u.email =:email "
+							   + "AND "
+							   + "u.ativo =:ativo", Usuario.class);
 			
-			return query.setParameter("email", email).setParameter("ativo", ativo).setMaxResults(1).getResultList().stream().findFirst();
+			return query.setParameter("email", email)
+						.setParameter("ativo", ativo)
+						.setMaxResults(1)
+						.getResultList()
+						.stream()
+						.findFirst();
 		}
+
+		
 	
 	}

@@ -10,20 +10,13 @@ import javax.validation.constraints.NotNull;
 
 import com.aula01web.util.ValidarSenha;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
 
-@Data
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+
 @Entity
 @Table(name = "TAB_PLANTA")
-@Getter @Setter
 public class Planta {
 
 	@Id
-	@EqualsAndHashCode.Include
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name ="PLANTA_ID") 
 	private Long id;

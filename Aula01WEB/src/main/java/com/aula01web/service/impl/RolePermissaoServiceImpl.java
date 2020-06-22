@@ -11,47 +11,48 @@ import com.aula01web.model.RolePermissaoId;
 import com.aula01web.repository.RolePermissaoRepository;
 import com.aula01web.service.RolePermissaoService;
 
+
 @Service
 @Transactional
-public class RolePermissaoServiceImpl implements RolePermissaoService{
+public class RolePermissaoServiceImpl implements RolePermissaoService {
 
 	@Autowired
 	private RolePermissaoRepository rolePermissaoRepository;
-	
+		
 	@Override
 	public List<RolePermissao> findAll() {
-		// TODO Auto-generated method stub
 		return rolePermissaoRepository.findAll();
 	}
 
 	@Override
 	public RolePermissao save(RolePermissao entity) {
-		// TODO Auto-generated method stub
+		rolePermissaoRepository.flush();
 		return rolePermissaoRepository.save(entity);
 	}
 
 	@Override
 	public RolePermissao update(RolePermissao entity) {
-		// TODO Auto-generated method stub
 		return this.save(entity);
 	}
 
 	@Override
 	public RolePermissao getOne(RolePermissaoId id) {
-		// TODO Auto-generated method stub
+		return rolePermissaoRepository.getOne(id);
+	}
+
+	@Override
+	public RolePermissao findById(RolePermissaoId id) {
 		return rolePermissaoRepository.getOne(id);
 	}
 
 	@Override
 	public void deleteById(RolePermissaoId id) {
-		// TODO Auto-generated method stub
-		rolePermissaoRepository.deleteById(id);
+	    rolePermissaoRepository.deleteById(id);	
 	}
 
-	@Override
-	public RolePermissao findById(RolePermissaoId id) {
-		// TODO Auto-generated method stub
-		return rolePermissaoRepository.getOne(id);
-	}
+	//@Override
+	//public List<RolePermissao> findRolePermissaoEscopoFiltro(RolePermissaoFiltro rolePermissaoFiltro) {
+	//	return rolePermissaoRepository.findRolePermissaoEscopoFiltro(rolePermissaoFiltro);
+	//}
 
 }

@@ -12,4 +12,6 @@ public interface UsuarioService extends GenericService<Usuario, Long>
 
 	Optional<Usuario> findUsuarioByEmail(String email);
 	//public Optional<Usuario> findUsuarioByEmail(String email);
+	
+	//Optional<Usuario> loginUsuarioByEmail(String email);
 	}
