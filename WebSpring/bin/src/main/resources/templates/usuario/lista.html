@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<title>Listagem de Usuários</title>
+</head>
+<body>
+	<section layout:fragment="conteudo">
+
+		<div class="app-title">
+			<h1>
+				<i class="fa fa-edit">Lista de Usuários</i>
+			</h1>
+			<ul class="app-breadcrumb breadcrumb">
+				<li class="breadcrumb-item"><i class="fa fa-search fa-lg"></i></li>
+				<li class="breadcrumb-item"><a th:href="@{/}">Menu
+						Principal</a></li>
+			</ul>
+		</div>
+		<div class="container">
+			<div class="tile">
+				<div class="tile-body">
+					<form class="form-inline" method="GET">
+						<div class="col-sm-12">
+							<div class="form-group">
+								<label class="control-label col-sm-1">Nome:</label> <input
+									type="text" class="form-control col-sm-9" id="nome" name="id"
+									placeholder="Digite um nome para pesquisar" />
+								<div class="col-sm-2">
+									<button type="submit" class="btn btn-primary">
+										Pesquisar <i class="fa fa-search-plus"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="tile">
+				<div class="tile-body">
+                  <div id="no-more-tables"> 
+					<table class="table table-stripped table-bordered table-hover cf">
+						<thead class="cf">
+							<tr>
+								<th>Id</th>
+								<th>Nome</th>
+								<th>E-mail</th>
+								<th>Ações</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="usuario :${listaUsuario}">
+								<td data-title="Id" th:text="${usuario.id}"></td>
+								<td data-title="Nome" th:text="${usuario.username}"></td>
+								<td data-title="E-mail" th:text="${usuario.email}"></td>
+								<td data-title="Ação"><a class="btn btn-info btn-sm"
+									th:href="@{/usuario/alterar/{id}(id=${usuario.id})}"><i
+										class="fa fa-pencil"></i></a> <a class="btn btn-danger btn-sm"
+									th:href="@{/usuario/excluir/{id}(id=${usuario.id})}"><i
+										class="fa fa-trash"></i></a></td>
+							</tr>
+						</tbody>
+					</table>
+					<a class="btn btn-success btn-sm" th:href="@{/usuario/novo}">Incluir
+						<i class="fa fa-plus-circle"></i>
+					</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
+
+
+
+
+
+

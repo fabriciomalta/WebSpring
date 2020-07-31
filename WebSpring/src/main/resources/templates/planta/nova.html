@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/bootstrap-switch.min.css}"></link>
+<meta charset="UTF-8">
+</head>
+<body>
+	<section layout:fragment="conteudo">
+		<div class="container">
+			<div class="app-title">
+				<h1>
+					<i class="fa fa-edit">Cadastro de Usuários</i>
+				</h1>
+				<ul class="app-breadcrumb breadcrumb">
+					<li class="breadcrumb-item"><i class="fa fa-search fa-lg"></i></li>
+					<li class="breadcrumb-item"><a th:href="@{/usuario/list}">Pequisa
+							de Usuários</a></li>
+				</ul>
+			</div>
+			<div class="tile">
+				<div class="tile-body">
+					<form
+						th:action="${usuario.id == null} ? @{/usuario/incluir} : @{/usuario/alterar}"
+						method="POST" th:object="${usuario}">
+
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12">
+								<div th:replace="fragments/validacao :: validacao"></div>
+								<div th:replace="fragments/alert"></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12">
+								<div class="form-group">
+									<label class="control-label">Nome:</label> <input type="text"
+										name="nome" id="nome" th:field="*{username}"
+										class="form-control"
+										th:classappend="${#fields.hasErrors('username')} ? 'is-invalid'" />
+									<div class="invalid-feedback">
+										<span th:errors="*{username}"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12">
+								<div class="form-group">
+									<label class="control-label">E-mail:</label> <input type="text"
+										name="email" id="email" th:field="*{email}"
+										class="form-control"
+										th:classappend="${#fields.hasErrors('email')} ? 'is-invalid'" />
+									<div class="invalid-feedback">
+										<span th:errors="*{email}"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label class="control-label">Senha:</label> <input
+										type="password" name="senha" id="senha" th:field="*{password}"
+										class="form-control"
+										th:classappend="${#fields.hasErrors('password')} ? 'is-invalid'" />
+									<div class="invalid-feedback">
+										<span th:errors="*{password}"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label class="control-label">Confirme Senha:</label> <input
+										type="password" name="confirmeSenha" id="confirmeSenha"
+										th:field="*{confirmeSenha}" class="form-control"
+										th:classappend="${#fields.hasErrors('confirmeSenha')} ? 'is-invalid'" />
+									<div class="invalid-feedback">
+										<span th:errors="*{confirmeSenha}"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<fieldset>
+							<legend>Grupos de Trabalho</legend>
+							<div class="row">
+								<th:block th:each="grupo : ${roles}">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+										<div class="form-group">
+											<label th:text="${grupo.nome}"></label>
+											<div class="make-switch switch-large">
+												<input type="checkbox" th:value="${grupo.id}"
+													th:field="*{roles}" class="js-status"
+													data-off-color="danger"
+													data-on-text="<i class='fa fa-check'></i>"
+													data-off-text="<i class='fa fa-times'></i>" />
+											</div>
+										</div>
+									</div>
+								</th:block>
+							</div>
+						</fieldset>
+
+						<input type="hidden" th:field="*{id}" id="id">
+						<div class="tile-footer">
+							<button type="submit" class="btn btn-primary">Salvar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+	<th:block layout:fragment="javascript-extra">
+		<script th:src="@{/js/bootstrap-switch.min.js}"></script>
+</body>
+</html>

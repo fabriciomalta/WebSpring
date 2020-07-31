@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<title>Listagem de Permissões</title>
+</head>
+<body>
+	<section layout:fragment="conteudo">
+
+		<div class="app-title">
+			<h1>
+				<i class="fa fa-edit">Lista de Permissões</i>
+			</h1>
+			<ul class="app-breadcrumb breadcrumb">
+				<li class="breadcrumb-item"><i class="fa fa-search fa-lg"></i></li>
+				<li class="breadcrumb-item"><a th:href="@{/}">Menu
+						Principal</a></li>
+			</ul>
+		</div>
+		<div class="container">
+			<div class="tile">
+				<div class="tile-body">
+					<form class="form" method="GET" th:object="${rolePermissaoFiltro}">
+						<div class="row">
+							<div class="col-sm-12 col-md-6">
+								<div class="form-group">
+									<label class="control-label">Grupo:</label> <input type="text"
+										class="form-control" id="nome" name="nome"
+										placeholder="Digite Grupo para pesquisa"
+										th:field="*{roleNome}">
+								</div>
+							</div>
+							<div class="col-sm-12 col-md-6">
+								<div class="form-group">
+									<label class="control-label">Permissão:</label> <input
+										type="text" class="form-control" id="permissao"
+										name="permissao" placeholder="Digite Permissao para pesquisa"
+										th:field="*{permissaoNome}">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12 col-md-6">
+								<div class="form-group">
+									<label class="control-label">Escopo:</label> <input type="text"
+										class="form-control" id="escopo" name="escopo"
+										placeholder="Digite Escopo para pesquisa"
+										th:field="*{escopoNome}">
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<label class="control-label">&nbsp</label>
+								<button type="submit" class="btn btn-primary form-control">
+									Pesquisar <i class="fa fa-search-plus"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="tile">
+				<div class="tile-body">
+					<div id="no-more-tables">
+						<table class="table table-stripped table-bordered table-hover cf">
+							<thead class="cf">
+								<tr>
+									<th>Grupo</th>
+									<th>Permissão</th>
+									<th>Escopo</th>
+									<th>Ações</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="rolePermissao :${listaRolePermissao}">
+									<td data-title="Grupo" th:text="${rolePermissao.role_id.nome}"></td>
+									<td data-title="Permissão"
+										th:text="${rolePermissao.permissao_id.nome}"></td>
+									<td data-title="Escopo"
+										th:text="${rolePermissao.escopo_id.nome}"></td>
+									<td data-title="Ação"><a class="btn btn-danger btn-sm"
+										th:href="@{/direitos/excluir/{role_id}/{permissao_id}/{escopo_id} (role_id=${rolePermissao.role_id.id},permissao_id=${rolePermissao.permissao_id.id},escopo_id=${rolePermissao.escopo_id.id})}"><i
+											class="fa fa-trash"></i></a></td>
+								</tr>
+							</tbody>
+						</table>
+						<a class="btn btn-success btn-sm" th:href="@{/direitos/novo}">Incluir
+							<i class="fa fa-plus-circle"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
+
+
+

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/bootstrap-switch.min.css}"></link>
+
+<meta charset="UTF-8">
+</head>
+<body>
+	<section layout:fragment="conteudo">
+		<div class="container">
+			<div class="app-title">
+				<h1>
+					<i class="fa fa-edit">Cadastro de Permissões</i>
+				</h1>
+				<ul class="app-breadcrumb breadcrumb">
+					<li class="breadcrumb-item"><i class="fa fa-search fa-lg"></i></li>
+					<li class="breadcrumb-item"><a th:href="@{/direitos/list}">Pequisa
+							de Permissões</a></li>
+				</ul>
+			</div>
+			<div class="tile">
+				<div class="tile-body">
+					<form
+						th:action="@{/direitos/incluir}"
+						method="POST" th:object="${rolePermissao}">
+
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12">
+								<div th:replace="fragments/validacao :: validacao"></div>
+								<div th:replace="fragments/alert"></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+								<div class="form-group">
+									<label for="roleid" class="control-label">Grupo</label> <select
+										id="roleid" class="form-control" th:field="*{role_id}">
+										<option value="">Selecione o grupo de usuários</option>
+										<option th:each="role : ${roles}" th:value="${role.id}"
+											th:text="${role.nome}"
+											th:classappend="${#fields.hasErrors('role_id')} ? 'is-invalid'">
+										</option>
+									</select>
+									<div class="invalid-feedback">
+										<span th:errors="*{role_id}"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+								<div class="form-group">
+									<label for="roleid" class="control-label">Permissão</label> <select
+										id="permissaoid" class="form-control" th:field="*{permissao_id}">
+										<option value="">Selecione uma permissão</option>
+										<option th:each="permissao : ${permissoes}" th:value="${permissao.id}"
+											th:text="${permissao.nome}"
+											th:classappend="${#fields.hasErrors('permissao_id')} ? 'is-invalid'">
+										</option>
+									</select>
+									<div class="invalid-feedback">
+										<span th:errors="*{permissao_id}"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+								<div class="form-group">
+									<label for="escopoid" class="control-label">Escopo</label> <select
+										id="escopoid" class="form-control" th:field="*{escopo_id}">
+										<option value="">Selecione um escopo</option>
+										<option th:each="escopo : ${escopos}" th:value="${escopo.id}"
+											th:text="${escopo.nome}"
+											th:classappend="${#fields.hasErrors('escopo_id')} ? 'is-invalid'">
+										</option>
+									</select>
+									<div class="invalid-feedback">
+										<span th:errors="*{escopo_id}"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="tile-footer">
+							<button type="submit" class="btn btn-primary">Salvar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

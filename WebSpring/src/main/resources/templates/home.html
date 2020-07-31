@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layout}">
+<head><meta charset="UTF-8"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"></link>
+</head>
+<body>
+	<section layout:fragment="conteudo">	
+		<div class="app-title">
+	        <div class="centro">
+	          <h1><i class="fa fa-home"></i> Página Principal</h1>
+	        </div>
+	        <ul class="app-breadcrumb breadcrumb">
+	          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+	          <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+	        </ul>
+      </div>
+      
+      <div class="container" >
+      		  <div class="box">
+      <div class="card">
+      
+        <div class="imgBx">
+        <a th:href="@{/planta/list}"> 
+            <img th:src="@{/img/Plantas.png}" alt="images"></a>
+        </div>
+        <div class="details">
+            <h2><span>Gerenciar</span>Plantas<br></h2>
+        </div>
+      </div>
+    
+       
+       <div class="card">
+       
+         <div class="imgBx">   
+         <a th:href="@{/usuario/list}">      
+            <img th:src="@{/img/Usuarios.png}" alt="images"></a>
+         </div>
+         <div class="details">
+           <h2><span>Gerenciar</span>Usuários<br></h2>
+          </div>
+       </div>
+
+       <div class="card">
+         <div class="imgBx">
+            <img th:src="@{/img/Canteiros.png}" alt="images">
+         </div>
+         <div class="details">
+            <h2><span>Gerenciar</span>Canteirios<br></h2>
+          </div>
+       </div>
+ 
+      		</div>
+      </div>
+      
+	</section>		
+</body>
+</html>

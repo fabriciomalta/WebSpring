@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+</head>
+<body>
+	<section layout:fragment="conteudo">
+		<div class="container">
+			<div class="app-title">
+				<h1>
+					<i class="fa fa-edit">Lista de Usuários</i>
+				</h1>
+				<ul class="app-breadcrumb breadcrumb">
+					<li class="breadcrumb-item"><i class="fa fa-search fa-lg"></i></li>
+					<li class="breadcrumb-item"><a th:href="@{/usuario/list}">Pequisa
+							de Usuários</a></li>
+				</ul>
+		    </div>
+			<form th:action="@{/usuario/excluir}" method="POST"
+				th:object="${usuario}">
+
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<div class="form-group">
+							<label class="control-label">Nome:</label> <input type="text"
+								name="nome" id="nome" th:field="*{username}" class="form-control" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<div class="form-group">
+							<label class="control-label">E-mail:</label> <input type="text"
+								name="email" id="email" th:field="*{email}" class="form-control" />
+
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label class="control-label">Senha:</label> <input
+								type="password" name="senha" id="senha" th:field="*{password}"
+								class="form-control" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label class="control-label">Confirme Senha:</label> <input
+								type="password" name="confirmeSenha" id="confirmeSenha"
+								th:field="*{confirmeSenha}" class="form-control" />
+						</div>
+					</div>
+				</div>
+				<input type="hidden" th:field="*{id}">
+				<button type="submit" class="btn btn-danger">
+					Excluir<i class="fa fa-trash"></i>
+				</button>
+			</form>
+		</div>
+	</section>
+</body>
+</html>

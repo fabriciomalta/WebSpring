@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/lista.css}"></link>
+<link rel="stylesheet" type="text/css" th:href="@{/css/datatables.css}"></link>
+<title>Listagem de Usuários</title>
+</head>
+<body>
+	<section layout:fragment="conteudo">
+
+		<div class="app-title">
+			<h1>
+				<i class="fa fa-edit">Lista de Usuários</i>
+			</h1>
+			<ul class="app-breadcrumb breadcrumb">
+				<li class="breadcrumb-item"><i class="fa fa-search fa-lg"></i></li>
+				<li class="breadcrumb-item"><a th:href="@{/}">Menu
+						Principal</a></li>
+			</ul>
+		</div>
+		<div class="container" >
+		
+			<div class="tile" style="background-color:#343A40;" >
+			<label class="control-label" style="display:block;color:#f24444;text-align:center;">IMPORTANTE!</label>
+			<label class="control-label" style="display:block;color:white;text-align:center;">-> Para adicionar um novo usuário é necessário ter permissão de gravação sobre os usuários.</label>
+			<label class="control-label" style="display:block;color:white;text-align:center;">-> Caso você seja um administrador, apenas ignore essa mensagem.</label>
+			<a class="btn btn-success btn" style="background-color:#51b742;  display: block; margin-left: auto;margin-right: auto;" th:href="@{/usuario/novo}">Incluir Novo Usuário
+						<i class="fa fa-plus-circle"></i>
+					</a>
+			</div>
+		</div>
+
+		<div class="container" >
+			<div class="tile" style="background-color:#343A40;">
+				<div class="tile-body">
+                  <div id="no-more-tables"> 
+					<table class="table table-dark table-bordered table-hover cf">
+						<thead class="cf">
+							<tr>
+								<th>Id</th>
+								<th>Nome</th>
+								<th>E-mail</th>
+								<th>Ações</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="usuario :${listaUsuario}">
+								<td data-title="Id" th:text="${usuario.id}"></td>
+								<td data-title="Nome" th:text="${usuario.username}"></td>
+								<td data-title="E-mail" th:text="${usuario.email}"></td>
+								<td data-title="Ação"><a class="btn btn-info btn-sm"
+									th:href="@{/usuario/alterar/{id}(id=${usuario.id})}"><i
+										class="fa fa-pencil"></i></a> <a class="btn btn-danger btn-sm"
+									th:href="@{/usuario/excluir/{id}(id=${usuario.id})}"><i
+										class="fa fa-trash"></i></a></td>
+							</tr>
+						</tbody>
+					</table>
+
+					</div>
+				</div>
+			</div>
+				<div class="tile" style="background-color:#343A40;">
+
+					<a class="btn btn-success btn" style="  display: block; margin-left: auto;margin-right: auto;" th:href="@{/home}">Voltar à pagina inicial
+						<i class="fa fa-arrow-left"></i>
+					</a>
+					</div>
+		</div>
+		
+	</section>
+</body>
+</html>
+
+
+
+
+
+
